@@ -292,6 +292,8 @@ def getNoiseParams(tags, blackLevel, whiteLevel, params, options):
 					lambdaRn = noiseProfile[1]
 				else:  # if noiseProfile has one value per CFA color
 					assert len(noiseProfile) == 6
+					print("Printing noiseProfile")
+					print(noiseProfile)
 					assert noiseProfile[0] == noiseProfile[2] == noiseProfile[4], 'NoiseProfile tag is different for each channel'
 					assert noiseProfile[1] == noiseProfile[3] == noiseProfile[5], 'NoiseProfile tag is different for each channel'
 					lambdaSn = noiseProfile[0]
