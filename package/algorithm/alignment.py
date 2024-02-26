@@ -275,7 +275,7 @@ def upsampleAlignments(referencePyramidLevel, alternatePyramidLevel, previousAli
 
 	# Create a mask of closest neighbors specifying the offsets to use to get the right indexes
 	# Build the elemental tile to be repeated
-	tile = np.empty((repeatFactor, repeatFactor, 2, 2), dtype=np.int)
+	tile = np.empty((repeatFactor, repeatFactor, 2, 2), dtype=int)
 	# upper and left coarse-scale tiles
 	tile[:(repeatFactor // 2), :(repeatFactor // 2)] = [[-1, 0], [0, -1]]
 	# upper and right coarse-scale tiles
@@ -372,8 +372,8 @@ def alignOnALevel(referencePyramidLevel, alternatePyramidLevel, options, upsampl
 	h, w, sR = upsampledAlignments.shape[0], upsampledAlignments.shape[1], 2 * searchRadius + 1
 
 	# the initial offsets / alignment guesses [u0, v0] correspond to the upsampled previous alignments
-	u0 = np.round(upsampledAlignments[:, :, 0]).astype(np.int)
-	v0 = np.round(upsampledAlignments[:, :, 1]).astype(np.int)
+	u0 = np.round(upsampledAlignments[:, :, 0]).astype(int)
+	v0 = np.round(upsampledAlignments[:, :, 1]).astype(int)
 	if verbose:
 		currentTime = getTime(currentTime, ' ---- Compute indices')
 

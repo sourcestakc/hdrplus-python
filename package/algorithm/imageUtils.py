@@ -81,7 +81,7 @@ def downsample(image, kernel='gaussian', factor=2):
 		filteredImage = signal.convolve2d(image, kernel, boundary='symm', mode='valid')
 
 	# Shape of the downsampled image
-	h2, w2 = np.floor(np.array(filteredImage.shape) / float(factor)).astype(np.int)
+	h2, w2 = np.floor(np.array(filteredImage.shape) / float(factor)).astype(int)
 
 	# Extract the pixels
 	if isTypeInt(image):
@@ -102,8 +102,8 @@ def getAlignedTiles(image, tileSize, motionVectors):
 	# Extract all the possible tiles of the image
 	imageTiles = getTiles(image, tileSize)
 	# Get the indices of the beginning of each tiles when moved
-	indIm = np.round((np.repeat((np.arange(hm) * tileSize // 2).reshape(hm, 1), wm, axis=1) + motionVectors[:, :, 0])).astype(np.int).clip(0, image.shape[0] - tileSize)
-	indJm = np.round((np.repeat((np.arange(wm) * tileSize // 2).reshape(1, wm), hm, axis=0) + motionVectors[:, :, 1])).astype(np.int).clip(0, image.shape[1] - tileSize)
+	indIm = np.round((np.repeat((np.arange(hm) * tileSize // 2).reshape(hm, 1), wm, axis=1) + motionVectors[:, :, 0])).astype(int).clip(0, image.shape[0] - tileSize)
+	indJm = np.round((np.repeat((np.arange(wm) * tileSize // 2).reshape(1, wm), hm, axis=0) + motionVectors[:, :, 1])).astype(int).clip(0, image.shape[1] - tileSize)
 	indI = np.repeat((np.arange(h) * tileSize // 2).reshape(h, 1), w, axis=1)
 	indJ = np.repeat((np.arange(w) * tileSize // 2).reshape(1, w), h, axis=0)
 	indI[:indIm.shape[0], :indIm.shape[1]] = indIm  # tiles that have no motion vectors attached will remain identical

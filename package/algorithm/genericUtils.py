@@ -37,7 +37,7 @@ def getSigned(array):
 	if dt == np.uint32:
 		return array.astype(np.int64)
 	if dt == np.uint64:
-		return array.astype(np.int)
+		return array.astype(int)
 
 	# Otherwise, the array is already signed, no need to cast it
 	return array
@@ -45,4 +45,4 @@ def getSigned(array):
 
 def isTypeInt(array):
 	'''Check if the type of a numpy array is an int type.'''
-	return array.dtype in [np.uint8, np.uint16, np.uint32, np.uint64, np.int8, np.int16, np.int32, np.int64, np.uint, np.int]
+	return array.dtype in [np.uint8, np.uint16, np.uint32, np.uint64, np.int8, np.int16, np.int32, np.int64, np.uint, int]
